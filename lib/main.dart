@@ -8,8 +8,7 @@ void main() {
     // xay dung giao dien dau tien
     home: SafeArea(
         child: Scaffold(
-          body: Center(
-              child: MyWidget2(true)),
+      body: Center(child: MyWidget2(false)),
       //     appBar: AppBar(
       //       backgroundColor: Colors.red,
       //       title:const Text("Hello nha"),
@@ -35,22 +34,36 @@ void main() {
 //   }
 
 // state
-class MyWidget2 extends StatefulWidget{
+class MyWidget2 extends StatefulWidget {
   final bool loading;
 
   MyWidget2(this.loading);
 
   @override
   State<StatefulWidget> createState() {
-  return MyWidget2State();
+    return MyWidget2State();
   }
-
 }
 
-class MyWidget2State extends State<MyWidget2>{
+class MyWidget2State extends State<MyWidget2> {
+  late bool _localLoading;
+  @override
+  void initState() {
+    _localLoading = widget.loading;
+  }
+
   @override
   Widget build(BuildContext context) {
-   return widget.loading ? CircularProgressIndicator() : Text("Stateful");
+    return _localLoading
+        ? const CircularProgressIndicator()
+        : FloatingActionButton(
+            onPressed: onClickButton,
+          );
   }
-  
+
+  void onClickButton() {
+    setState(() {
+      _localLoading = true;
+    });
+  }
 }
