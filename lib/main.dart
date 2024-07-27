@@ -4,11 +4,21 @@ import 'package:flutter/material.dart';
 //Main
 void main() {
   // Khoi chay app
-  runApp(MaterialApp(
+  runApp( MaterialApp(
+    theme: ThemeData(
+      fontFamily: 'test'
+    ),
     // xay dung giao dien dau tien
-    home: SafeArea(
+    home: const SafeArea(
         child: Scaffold(
-      body: Center(child: MyWidget2(false)),
+      body: Center(child: Text('etest',
+        textDirection: TextDirection.ltr,
+      style: TextStyle(
+        color: Colors.pink,
+        fontFamily: 'test',
+        fontSize: 30
+        // fontStyle: FontStyle.italic
+      ),)),
       //     appBar: AppBar(
       //       backgroundColor: Colors.red,
       //       title:const Text("Hello nha"),
@@ -34,36 +44,36 @@ void main() {
 //   }
 
 // state
-class MyWidget2 extends StatefulWidget {
-  final bool loading;
-
-  MyWidget2(this.loading);
-
-  @override
-  State<StatefulWidget> createState() {
-    return MyWidget2State();
-  }
-}
-
-class MyWidget2State extends State<MyWidget2> {
-  late bool _localLoading;
-  @override
-  void initState() {
-    _localLoading = widget.loading;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return _localLoading
-        ? const CircularProgressIndicator()
-        : FloatingActionButton(
-            onPressed: onClickButton,
-          );
-  }
-
-  void onClickButton() {
-    setState(() {
-      _localLoading = true;
-    });
-  }
-}
+// class MyWidget2 extends StatefulWidget {
+//   final bool loading;
+//
+//   MyWidget2(this.loading);
+//
+//   @override
+//   State<StatefulWidget> createState() {
+//     return MyWidget2State();
+//   }
+// }
+//
+// class MyWidget2State extends State<MyWidget2> {
+//   late bool _localLoading;
+//   @override
+//   void initState() {
+//     _localLoading = widget.loading;
+//   }
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return _localLoading
+//         ? const CircularProgressIndicator()
+//         : FloatingActionButton(
+//             onPressed: onClickButton,
+//           );
+//   }
+//
+//   void onClickButton() {
+//     setState(() {
+//       _localLoading = true;
+//     });
+//   }
+//}
